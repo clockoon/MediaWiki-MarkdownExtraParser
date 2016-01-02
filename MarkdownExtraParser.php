@@ -100,6 +100,7 @@ if ( defined( 'MEDIAWIKI' ) ) {
 
 	// Register our MediaWiki parser hooks
 	$wgHooks['ParserBeforeStrip'][] = array( $markdownExtraParser, 'parseAsMarkdown' );
+	$wgHooks['InternalParseBeforeLinks'][] = array( $markdownExtraParser, 'fixLinkNonsense' );
 
 	if ( $markdownExtraParser->getConfig( 'use_raw_html' ) ) {
 		$wgHooks['InternalParseBeforeSanitize'][] = array( $markdownExtraParser, 'saveContent' );
